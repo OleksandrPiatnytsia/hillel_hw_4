@@ -56,3 +56,21 @@ class Product:
 
     def change_price(self, new_price: int) -> None:
         self.__price = new_price
+
+
+class Customer:
+    name: str
+    email: str
+    phone: str
+    orders: list
+
+    def __init__(self, name: str, email: str, phone: str) -> None:
+        self.name = name
+        self.email = email
+        self.phone = phone
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"
+
+    def __repr__(self):
+        return f"{self.name} ({self.email})"
