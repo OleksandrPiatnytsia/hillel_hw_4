@@ -58,11 +58,22 @@ class Product:
         self.__price = new_price
 
 
+class Order:
+    products: list[Product]
+    total_price: int
+
+    def add_product(self, product: Product) -> None:
+        self.products.append(product)
+
+    def calculate_total_price(self) -> None:
+        self.total_price = sum(product.price for product in self.products)
+
+
 class Customer:
     name: str
     email: str
     phone: str
-    orders: list
+    orders: list[Order]
 
     def __init__(self, name: str, email: str, phone: str) -> None:
         self.name = name
