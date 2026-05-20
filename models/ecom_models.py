@@ -84,6 +84,10 @@ class Order:
     products: list[Product]
     total_price: int
 
+    def __init__(self) -> None:
+        self.products = []
+        self.total_price = 0
+
     def add_product(self, product: Product) -> None:
         self.products.append(product)
 
