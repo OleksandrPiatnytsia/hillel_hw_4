@@ -20,8 +20,6 @@ class Product:
     category: ProductCategory
     currency: Currency
     description: str | None
-    stock_quantity: int
-    image: str
     __price: int  # price in coins
     __stock_quantity: list[int]
 
@@ -57,6 +55,30 @@ class Product:
     def change_price(self, new_price: int) -> None:
         self.__price = new_price
 
+    def to_dict(self) -> dict:
+        return {
+            "title": self.title,
+            "category": self.category.value,
+            "currency": self.currency.value,
+            "description": self.description,
+            "price": self.__price,
+            "stock_quantity": self.__stock_quantity,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        product = cls(
+            title=data["title"],
+            category=ProductCategory(data["category"]),
+            currency=Currency(data["currency"]),
+            price=data["price"],
+            description=data.get("description"),
+        )
+
+        product._Product__stock_quantity = data["stock_quantity"]
+
+        return product
+
 
 class Order:
     products: list[Product]
@@ -67,6 +89,24 @@ class Order:
 
     def calculate_total_price(self) -> None:
         self.total_price = sum(product.price for product in self.products)
+
+    def to_dict(self) -> dict:
+        return {
+            "products": [product.to_dict() for product in self.products],
+            "total_price": self.total_price,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        order = cls()
+
+        order.products = [
+            Product.from_dict(product_data) for product_data in data["products"]
+        ]
+
+        order.total_price = data["total_price"]
+
+        return order
 
 
 class Customer:
@@ -85,3 +125,23 @@ class Customer:
 
     def __repr__(self):
         return f"{self.name} ({self.email})"
+
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "email": self.email,
+            "phone": self.phone,
+            "orders": [order.to_dict() for order in self.orders],
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        customer = cls(
+            name=data["name"],
+            email=data["email"],
+            phone=data["phone"],
+        )
+
+        customer.orders = [Order.from_dict(order_data) for order_data in data["orders"]]
+
+        return customer
