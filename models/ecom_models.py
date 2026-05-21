@@ -1,4 +1,5 @@
 from enum import Enum
+from uuid import uuid4, UUID
 
 
 class ProductCategory(str, Enum):
@@ -16,6 +17,7 @@ class Currency(str, Enum):
 
 
 class Product:
+    id: str
     title: str
     category: ProductCategory
     currency: Currency
@@ -30,16 +32,25 @@ class Product:
         currency: Currency,
         description: str | None = None,
     ) -> None:
+        self.id = str(uuid4())
         self.title = title
         self.category = category
         self.currency = currency
         self.description = description
+        self.__price = 0
+        self.__stock_quantity = []
 
     def __str__(self):
-        return f"{self.title} ({self.price})"
+        return f"({self.id}) {self.title} ({self.price})"
 
     def __repr__(self):
-        return f"{self.title} ({self.price})"
+        return f"({self.id}) {self.title} ({self.price})"
+
+    def __eq__(self, other):
+        return isinstance(other, Product) and self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
 
     @property
     def price(self) -> int:
@@ -57,6 +68,7 @@ class Product:
 
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "title": self.title,
             "category": self.category.value,
             "currency": self.currency.value,
@@ -71,22 +83,31 @@ class Product:
             title=data["title"],
             category=ProductCategory(data["category"]),
             currency=Currency(data["currency"]),
-            price=data["price"],
             description=data.get("description"),
         )
 
+        product.id = data["id"]
+        product._Product__price = data["price"]
         product._Product__stock_quantity = data["stock_quantity"]
 
         return product
 
 
 class Order:
+    id: str
     products: list[Product]
     total_price: int
 
     def __init__(self) -> None:
+        self.id = str(uuid4())
         self.products = []
         self.total_price = 0
+
+    def __eq__(self, other):
+        return isinstance(other, Product) and self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
 
     def add_product(self, product: Product) -> None:
         self.products.append(product)
@@ -96,6 +117,7 @@ class Order:
 
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "products": [product.to_dict() for product in self.products],
             "total_price": self.total_price,
         }
@@ -104,6 +126,7 @@ class Order:
     def from_dict(cls, data: dict):
         order = cls()
 
+        order.id = data["id"]
         order.products = [
             Product.from_dict(product_data) for product_data in data["products"]
         ]
@@ -114,15 +137,18 @@ class Order:
 
 
 class Customer:
+    id: str
     name: str
     email: str
     phone: str
     orders: list[Order]
 
     def __init__(self, name: str, email: str, phone: str) -> None:
+        self.id = str(uuid4())
         self.name = name
         self.email = email
         self.phone = phone
+        self.orders = []
 
     def __str__(self):
         return f"{self.name} ({self.email})"
@@ -130,8 +156,18 @@ class Customer:
     def __repr__(self):
         return f"{self.name} ({self.email})"
 
+    def __eq__(self, other):
+        return isinstance(other, Product) and self.id == other.id
+
+    def __hash__(self):
+        return hash(self.id)
+
+    def add_order(self, order: Order) -> None:
+        self.orders.append(order)
+
     def to_dict(self) -> dict:
         return {
+            "id": self.id,
             "name": self.name,
             "email": self.email,
             "phone": self.phone,
@@ -146,6 +182,7 @@ class Customer:
             phone=data["phone"],
         )
 
+        customer.id = data["id"]
         customer.orders = [Order.from_dict(order_data) for order_data in data["orders"]]
 
         return customer
