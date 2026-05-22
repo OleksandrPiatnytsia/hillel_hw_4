@@ -1,5 +1,5 @@
 from enum import Enum
-from uuid import uuid4, UUID
+from uuid import uuid4
 
 
 class ProductCategory(str, Enum):
@@ -16,8 +16,18 @@ class Currency(str, Enum):
     PLN = "PLN"
 
 
-class Product:
-    id: str
+class UniqueIdentifier:
+    __id: str
+
+    def __init__(self) -> None:
+        self.__id = str(uuid4())
+
+    @property
+    def id(self) -> str:
+        return self.__id
+
+
+class Product(UniqueIdentifier):
     title: str
     category: ProductCategory
     currency: Currency
@@ -32,7 +42,8 @@ class Product:
         currency: Currency,
         description: str | None = None,
     ) -> None:
-        self.id = str(uuid4())
+
+        super().__init__()
         self.title = title
         self.category = category
         self.currency = currency
@@ -93,13 +104,12 @@ class Product:
         return product
 
 
-class Order:
-    id: str
+class Order(UniqueIdentifier):
     products: list[Product]
     total_price: int
 
     def __init__(self) -> None:
-        self.id = str(uuid4())
+        super().__init__()
         self.products = []
         self.total_price = 0
 
@@ -136,15 +146,14 @@ class Order:
         return order
 
 
-class Customer:
-    id: str
+class Customer(UniqueIdentifier):
     name: str
     email: str
     phone: str
     orders: list[Order]
 
     def __init__(self, name: str, email: str, phone: str) -> None:
-        self.id = str(uuid4())
+        super().__init__()
         self.name = name
         self.email = email
         self.phone = phone
