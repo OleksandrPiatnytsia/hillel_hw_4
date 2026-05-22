@@ -1,3 +1,4 @@
+import random
 from enum import Enum
 from typing import Any, Self
 from uuid import uuid4
@@ -140,6 +141,9 @@ class ProductsCollection(
     def delete(self, product_id: str) -> None:
         self.data.pop(product_id, None)
 
+    def get_random_product(self) -> Product:
+        return random.choice(list(self.data.values()))
+
 
 class OrderItem(SerializationDefine):
     product: Product
@@ -210,14 +214,30 @@ class Order(UniqueIdentifier, SerializationDefine):
     def __hash__(self):
         return hash(self.id)
 
-    def add_product(
+    def add_order_item(
         self,
-        product: Product,
-        quantity: int,
+        order_item_or_product: OrderItem | Product,
+        quantity: int | None = None,
         price: int | None = None,
         discount: int = 0,
     ) -> None:
-        self.order_items.append(OrderItem(product, quantity, price, discount))
+
+        if isinstance(order_item_or_product, OrderItem):
+            order_item = order_item_or_product
+
+        else:
+            if quantity is None:
+                raise ValueError("Quantity is required")
+
+            order_item = OrderItem(
+                product=order_item_or_product,
+                quantity=quantity,
+                price=price,
+                discount=discount,
+            )
+
+        self.order_items.append(order_item)
+
         self.calculate_total_price()
 
     def calculate_total_price(self) -> None:

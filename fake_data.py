@@ -7,6 +7,8 @@ from models.ecom_models import (
     Product,
     ProductCategory,
     Currency,
+    OrderItem,
+    ProductsCollection,
 )
 
 fake = Faker()
@@ -34,3 +36,18 @@ def create_random_customer() -> Customer:
     )
 
     return customer
+
+
+def create_random_order_item() -> OrderItem:
+    product = ProductsCollection().get_random_product()
+
+    order_item = OrderItem(
+        product=product,
+        quantity=random.randint(1, 100),
+        price=product.price,
+        discount=random.choice(
+            [5, 10, 15, 20],
+        ),
+    )
+
+    return order_item

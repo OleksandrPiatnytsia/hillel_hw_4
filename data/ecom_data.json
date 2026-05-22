@@ -1,0 +1,331 @@
+{
+    "products": [
+        {
+            "id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+            "title": "Place",
+            "category": "soft toy",
+            "currency": "USD",
+            "description": "Trade property color.",
+            "price": 37,
+            "stock_quantity": [
+                44
+            ]
+        },
+        {
+            "id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+            "title": "Weight",
+            "category": "constructor",
+            "currency": "USD",
+            "description": "Need a condition history might me.",
+            "price": 21,
+            "stock_quantity": [
+                63
+            ]
+        },
+        {
+            "id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+            "title": "Lawyer",
+            "category": "soft toy",
+            "currency": "EUR",
+            "description": "Continue economy own better.",
+            "price": 24,
+            "stock_quantity": [
+                14
+            ]
+        }
+    ],
+    "customers": [
+        {
+            "id": "b408855f-1158-4d16-8b76-c20c7a7c09ec",
+            "name": "Jessica Diaz",
+            "email": "gailwade@example.com",
+            "phone": "+1-291-732-3901x961",
+            "orders": [
+                {
+                    "id": "1ce28682-efda-4f14-8e00-352d2b4bfd4b",
+                    "order_items": [
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 47,
+                            "price": 21,
+                            "discount": 5,
+                            "item_total_price": 937
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 11,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 345
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 100,
+                            "price": 37,
+                            "discount": 20,
+                            "item_total_price": 2960
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 10,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 204
+                        }
+                    ],
+                    "total_price": 4446
+                },
+                {
+                    "id": "524543ba-3739-4465-8d75-6cd0d13ceead",
+                    "order_items": [
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 34,
+                            "price": 21,
+                            "discount": 10,
+                            "item_total_price": 642
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 74,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 1509
+                        }
+                    ],
+                    "total_price": 2151
+                },
+                {
+                    "id": "318c9013-dbe2-49e5-8505-e131e47d4a9a",
+                    "order_items": [
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 74,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 1509
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 93,
+                            "price": 24,
+                            "discount": 20,
+                            "item_total_price": 1785
+                        },
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 49,
+                            "price": 21,
+                            "discount": 10,
+                            "item_total_price": 926
+                        },
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 76,
+                            "price": 21,
+                            "discount": 5,
+                            "item_total_price": 1516
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 66,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 2075
+                        }
+                    ],
+                    "total_price": 7811
+                },
+                {
+                    "id": "9b867406-92a3-488b-aad4-b2097096583a",
+                    "order_items": [
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 69,
+                            "price": 37,
+                            "discount": 5,
+                            "item_total_price": 2425
+                        }
+                    ],
+                    "total_price": 2425
+                },
+                {
+                    "id": "965289e3-94ae-48f6-91f5-32c9307ebc78",
+                    "order_items": [
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 27,
+                            "price": 37,
+                            "discount": 5,
+                            "item_total_price": 949
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 42,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 856
+                        },
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 27,
+                            "price": 21,
+                            "discount": 20,
+                            "item_total_price": 453
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 24,
+                            "price": 37,
+                            "discount": 20,
+                            "item_total_price": 710
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 1,
+                            "price": 37,
+                            "discount": 10,
+                            "item_total_price": 33
+                        },
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 80,
+                            "price": 21,
+                            "discount": 20,
+                            "item_total_price": 1344
+                        }
+                    ],
+                    "total_price": 4345
+                },
+                {
+                    "id": "99156af6-6de6-4c62-b79c-ddac46f1128f",
+                    "order_items": [
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 100,
+                            "price": 37,
+                            "discount": 20,
+                            "item_total_price": 2960
+                        },
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 89,
+                            "price": 21,
+                            "discount": 15,
+                            "item_total_price": 1588
+                        }
+                    ],
+                    "total_price": 4548
+                },
+                {
+                    "id": "088b8b36-0afd-4f7c-8c43-27905059b110",
+                    "order_items": [
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 22,
+                            "price": 21,
+                            "discount": 5,
+                            "item_total_price": 438
+                        }
+                    ],
+                    "total_price": 438
+                },
+                {
+                    "id": "d8620324-6919-427c-b325-b297013b374c",
+                    "order_items": [
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 28,
+                            "price": 37,
+                            "discount": 5,
+                            "item_total_price": 984
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 84,
+                            "price": 37,
+                            "discount": 10,
+                            "item_total_price": 2797
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 33,
+                            "price": 24,
+                            "discount": 10,
+                            "item_total_price": 712
+                        }
+                    ],
+                    "total_price": 4493
+                },
+                {
+                    "id": "e8cf4169-45e4-436f-aed2-935a3454d562",
+                    "order_items": [
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 18,
+                            "price": 21,
+                            "discount": 15,
+                            "item_total_price": 321
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 94,
+                            "price": 24,
+                            "discount": 20,
+                            "item_total_price": 1804
+                        }
+                    ],
+                    "total_price": 2125
+                },
+                {
+                    "id": "4d73e47f-909a-4452-8764-e87e73b1bce8",
+                    "order_items": [
+                        {
+                            "product_id": "ab01d42f-26aa-4639-ae64-38fe66556916",
+                            "quantity": 46,
+                            "price": 21,
+                            "discount": 5,
+                            "item_total_price": 917
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 56,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 1142
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 1,
+                            "price": 24,
+                            "discount": 5,
+                            "item_total_price": 22
+                        },
+                        {
+                            "product_id": "f971fb60-6adb-4120-9c1b-6662a9d9caba",
+                            "quantity": 73,
+                            "price": 24,
+                            "discount": 5,
+                            "item_total_price": 1664
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 35,
+                            "price": 37,
+                            "discount": 20,
+                            "item_total_price": 1036
+                        },
+                        {
+                            "product_id": "a5e65957-295f-4513-9d3c-c5852423ccfa",
+                            "quantity": 3,
+                            "price": 37,
+                            "discount": 5,
+                            "item_total_price": 105
+                        }
+                    ],
+                    "total_price": 4886
+                }
+            ]
+        }
+    ]
+}
