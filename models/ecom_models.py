@@ -97,7 +97,7 @@ class Product(UniqueIdentifier):
             description=data.get("description"),
         )
 
-        product.id = data["id"]
+        product._Product__id = data["id"]
         product._Product__price = data["price"]
         product._Product__stock_quantity = data["stock_quantity"]
 
@@ -136,7 +136,7 @@ class Order(UniqueIdentifier):
     def from_dict(cls, data: dict):
         order = cls()
 
-        order.id = data["id"]
+        order._Order__id = data["id"]
         order.products = [
             Product.from_dict(product_data) for product_data in data["products"]
         ]
@@ -191,7 +191,7 @@ class Customer(UniqueIdentifier):
             phone=data["phone"],
         )
 
-        customer.id = data["id"]
+        customer._Customer__id = data["id"]
         customer.orders = [Order.from_dict(order_data) for order_data in data["orders"]]
 
         return customer
