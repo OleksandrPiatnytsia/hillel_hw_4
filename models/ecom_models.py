@@ -1,5 +1,10 @@
 from enum import Enum
+from typing import Any, Self
 from uuid import uuid4
+from abc import ABC, abstractmethod
+from collections import UserDict
+
+from models.metaclases import SingletonMeta
 
 
 class ProductCategory(str, Enum):
@@ -16,6 +21,17 @@ class Currency(str, Enum):
     PLN = "PLN"
 
 
+class SerializationDefine(ABC):
+    @abstractmethod
+    def to_dict(self) -> dict[str, Any]:
+        pass
+
+    @classmethod
+    @abstractmethod
+    def from_dict(cls, data: dict[str, Any]) -> Self:
+        pass
+
+
 class UniqueIdentifier:
     __id: str
 
@@ -27,7 +43,7 @@ class UniqueIdentifier:
         return self.__id
 
 
-class Product(UniqueIdentifier):
+class Product(UniqueIdentifier, SerializationDefine):
     title: str
     category: ProductCategory
     currency: Currency
@@ -72,12 +88,19 @@ class Product(UniqueIdentifier):
         return sum(self.__stock_quantity)
 
     def update_stock(self, quantity: int) -> None:
+        if self.stock_quantity + quantity < 0:
+            raise ValueError("Insufficient stock")
+
         self.__stock_quantity.append(quantity)
 
     def change_price(self, new_price: int) -> None:
+
+        if new_price < 0:
+            raise ValueError("Price cannot be negative")
+
         self.__price = new_price
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.id,
             "title": self.title,
@@ -89,7 +112,7 @@ class Product(UniqueIdentifier):
         }
 
     @classmethod
-    def from_dict(cls, data: dict):
+    def from_dict(cls, data: dict[str, Any]):
         product = cls(
             title=data["title"],
             category=ProductCategory(data["category"]),
@@ -97,20 +120,88 @@ class Product(UniqueIdentifier):
             description=data.get("description"),
         )
 
-        product._Product__id = data["id"]
+        product._UniqueIdentifier__id = data["id"]
         product._Product__price = data["price"]
         product._Product__stock_quantity = data["stock_quantity"]
 
         return product
 
 
-class Order(UniqueIdentifier):
-    products: list[Product]
+class ProductsCollection(
+    UserDict[str, Product],
+    metaclass=SingletonMeta,
+):
+    def add_product(self, product: Product) -> None:
+        self.data[product.id] = product
+
+    def find_product(self, product_id: str) -> Product | None:
+        return self.data.get(product_id)
+
+    def delete(self, product_id: str) -> None:
+        self.data.pop(product_id, None)
+
+
+class OrderItem(SerializationDefine):
+    product: Product
+    quantity: int
+    price: int
+    discount: int
+    item_total_price: int
+
+    def __init__(
+        self,
+        product: Product,
+        quantity: int,
+        price: int | None = None,
+        discount: int = 0,
+    ) -> None:
+        self.product = product
+        self.quantity = quantity
+        self.price = self.product.price if price is None else price
+        self.discount = discount
+        self.calculate_item_total_price()
+
+    def calculate_item_total_price(self) -> None:
+        self.item_total_price = (
+            self.price * self.quantity * (100 - self.discount)
+        ) // 100
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "product_id": self.product.id,
+            "quantity": self.quantity,
+            "price": self.price,
+            "discount": self.discount,
+            "item_total_price": self.item_total_price,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]):
+
+        product = ProductsCollection().find_product(data["product_id"])
+
+        if not product:
+            raise ValueError("Product not found")
+
+        order_item = cls(
+            product=product,
+            quantity=data["quantity"],
+            price=data["price"],
+            discount=data["discount"],
+        )
+        order_item.item_total_price = data["item_total_price"]
+
+        return order_item
+
+
+class Order(UniqueIdentifier, SerializationDefine):
+
     total_price: int
+    order_items: list[OrderItem]
 
     def __init__(self) -> None:
         super().__init__()
-        self.products = []
+        self.order_items = []
         self.total_price = 0
 
     def __eq__(self, other):
@@ -119,26 +210,35 @@ class Order(UniqueIdentifier):
     def __hash__(self):
         return hash(self.id)
 
-    def add_product(self, product: Product) -> None:
-        self.products.append(product)
+    def add_product(
+        self,
+        product: Product,
+        quantity: int,
+        price: int | None = None,
+        discount: int = 0,
+    ) -> None:
+        self.order_items.append(OrderItem(product, quantity, price, discount))
+        self.calculate_total_price()
 
     def calculate_total_price(self) -> None:
-        self.total_price = sum(product.price for product in self.products)
+        self.total_price = sum(
+            order_item.item_total_price for order_item in self.order_items
+        )
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.id,
-            "products": [product.to_dict() for product in self.products],
+            "order_items": [order_item.to_dict() for order_item in self.order_items],
             "total_price": self.total_price,
         }
 
     @classmethod
-    def from_dict(cls, data: dict):
+    def from_dict(cls, data: dict[str, Any]):
         order = cls()
 
-        order._Order__id = data["id"]
-        order.products = [
-            Product.from_dict(product_data) for product_data in data["products"]
+        order._UniqueIdentifier__id = data["id"]
+        order.order_items = [
+            OrderItem.from_dict(order_item) for order_item in data["order_items"]
         ]
 
         order.total_price = data["total_price"]
@@ -146,7 +246,7 @@ class Order(UniqueIdentifier):
         return order
 
 
-class Customer(UniqueIdentifier):
+class Customer(UniqueIdentifier, SerializationDefine):
     name: str
     email: str
     phone: str
@@ -174,7 +274,7 @@ class Customer(UniqueIdentifier):
     def add_order(self, order: Order) -> None:
         self.orders.append(order)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "id": self.id,
             "name": self.name,
@@ -184,14 +284,14 @@ class Customer(UniqueIdentifier):
         }
 
     @classmethod
-    def from_dict(cls, data: dict):
+    def from_dict(cls, data: dict[str, Any]):
         customer = cls(
             name=data["name"],
             email=data["email"],
             phone=data["phone"],
         )
 
-        customer._Customer__id = data["id"]
+        customer._UniqueIdentifier__id = data["id"]
         customer.orders = [Order.from_dict(order_data) for order_data in data["orders"]]
 
         return customer
