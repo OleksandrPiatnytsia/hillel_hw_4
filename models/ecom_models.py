@@ -104,7 +104,7 @@ class Order:
         self.total_price = 0
 
     def __eq__(self, other):
-        return isinstance(other, Product) and self.id == other.id
+        return isinstance(other, Order) and self.id == other.id
 
     def __hash__(self):
         return hash(self.id)
@@ -157,7 +157,7 @@ class Customer:
         return f"{self.name} ({self.email})"
 
     def __eq__(self, other):
-        return isinstance(other, Product) and self.id == other.id
+        return isinstance(other, Customer) and self.id == other.id
 
     def __hash__(self):
         return hash(self.id)
