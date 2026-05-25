@@ -214,31 +214,43 @@ class Order(UniqueIdentifier, SerializationDefine):
     def __hash__(self):
         return hash(self.id)
 
-    def add_order_item(
-        self,
-        order_item_or_product: OrderItem | Product,
-        quantity: int | None = None,
-        price: int | None = None,
-        discount: int = 0,
-    ) -> None:
+    def add_order_item(self, new_order_item: OrderItem) -> bool:
 
-        if isinstance(order_item_or_product, OrderItem):
-            order_item = order_item_or_product
-
-        else:
-            if quantity is None:
-                raise ValueError("Quantity is required")
-
-            order_item = OrderItem(
-                product=order_item_or_product,
-                quantity=quantity,
-                price=price,
-                discount=discount,
+        if (
+            new_order_item.quantity
+            > new_order_item.product.stock_quantity
+        ):
+            print(
+                f"Order item quantity:{new_order_item.quantity} exceeds product stock quantity:"
+                f" {new_order_item.product.stock_quantity}"
             )
+            return False
 
-        self.order_items.append(order_item)
+        product_exists = False
+
+        for order_item in self.order_items:
+            if order_item.product == new_order_item.product:
+                product_exists = True
+
+                print(f"{order_item.product}. Додаємо кількість: {new_order_item.quantity} до існуючого товару: {order_item.quantity}")
+
+                order_item.quantity += new_order_item.quantity
+
+                print(f"{order_item.product}. Після Додавання: {order_item.quantity}")
+
+                order_item.discount = min(
+                    order_item.discount, new_order_item.discount
+                )
+                order_item.price = min(order_item.price, new_order_item.price)
+
+        if not product_exists:
+            self.order_items.append(new_order_item)
+
+        new_order_item.product.update_stock(-new_order_item.quantity)
 
         self.calculate_total_price()
+
+        return True
 
     def calculate_total_price(self) -> None:
         self.total_price = sum(
