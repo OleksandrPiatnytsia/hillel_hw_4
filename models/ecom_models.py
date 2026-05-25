@@ -69,10 +69,10 @@ class Product(UniqueIdentifier, SerializationDefine):
         self.__stock_quantity = []
 
     def __str__(self):
-        return f"({self.id}) {self.title} ({self.price})"
+        return f"({self.id}) {self.title} ({self.price} {self.currency.value})"
 
     def __repr__(self):
-        return f"({self.id}) {self.title} ({self.price})"
+        return f"({self.id}) {self.title} ({self.price} {self.currency.value})"
 
     def __eq__(self, other):
         return isinstance(other, Product) and self.id == other.id
@@ -233,17 +233,8 @@ class Order(UniqueIdentifier, SerializationDefine):
         )
 
         if existing_order_item:
-            print(
-                f"{existing_order_item.product}. "
-                f"Adding quantity: {new_order_item.quantity} "
-                f"to existing quantity: {existing_order_item.quantity}"
-            )
 
             existing_order_item.quantity += new_order_item.quantity
-
-            print(
-                f"{existing_order_item.product}. Після Додавання: {existing_order_item.quantity}"
-            )
 
             existing_order_item.discount = min(
                 existing_order_item.discount, new_order_item.discount
