@@ -12,22 +12,20 @@ class JsonDataSerialization:
 
         products = ProductsCollection()
 
-        response = products, []
-
         if not cls.ecom_data_path.exists():
-            return response
+            return products, []
 
         try:
             with open(cls.ecom_data_path, "r", encoding="utf-8") as fd:
                 content = fd.read().strip()
 
                 if not content:
-                    return response
+                    return products, []
 
                 data = json.loads(content)
 
         except json.JSONDecodeError:
-            return response
+            return products, []
 
         for product_item in data.get("products", []):
             products.add_product(Product.from_dict(product_item))

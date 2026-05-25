@@ -1,0 +1,634 @@
+{
+    "products": [
+        {
+            "id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+            "title": "Hard",
+            "category": "constructor",
+            "currency": "USD",
+            "description": "Attention science magazine happy give provide end.",
+            "price": 13,
+            "stock_quantity": [
+                125,
+                -95,
+                -8,
+                -6,
+                -9,
+                55,
+                -50,
+                -4,
+                87,
+                -73,
+                96,
+                -70,
+                -48
+            ]
+        },
+        {
+            "id": "1539e004-a57c-4113-a25a-289d79a55e63",
+            "title": "High",
+            "category": "paw patrol",
+            "currency": "EUR",
+            "description": "Organization option plant we tree before throughout.",
+            "price": 24,
+            "stock_quantity": [
+                142,
+                -95,
+                -40,
+                -1,
+                37,
+                -23
+            ]
+        },
+        {
+            "id": "2bda4310-1503-4f56-a3aa-efbfdfd2aedb",
+            "title": "Forget",
+            "category": "paw patrol",
+            "currency": "EUR",
+            "description": "Every almost their during sense through.",
+            "price": 35,
+            "stock_quantity": [
+                94,
+                -46,
+                -22,
+                -13,
+                -6,
+                27
+            ]
+        },
+        {
+            "id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+            "title": "Field",
+            "category": "wear",
+            "currency": "PLN",
+            "description": "Trouble short set life before country.",
+            "price": 37,
+            "stock_quantity": [
+                147,
+                -12,
+                -27,
+                -46,
+                -10,
+                -37,
+                -13,
+                60,
+                -20,
+                -36,
+                37,
+                -43
+            ]
+        },
+        {
+            "id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+            "title": "Main",
+            "category": "soft toy",
+            "currency": "PLN",
+            "description": "Focus sea strong process.",
+            "price": 40,
+            "stock_quantity": [
+                166,
+                -81,
+                -64,
+                -3,
+                63,
+                -59,
+                -13,
+                76,
+                -13,
+                -44
+            ]
+        },
+        {
+            "id": "65cc1eca-172f-4e1d-9d37-af253996b0ef",
+            "title": "Floor",
+            "category": "wear",
+            "currency": "EUR",
+            "description": "Which with sound result.",
+            "price": 44,
+            "stock_quantity": [
+                154,
+                -46,
+                -41,
+                -6,
+                -43
+            ]
+        },
+        {
+            "id": "aa88e87e-4f8b-4c81-a151-fbf9d24e85ce",
+            "title": "Card",
+            "category": "constructor",
+            "currency": "USD",
+            "description": "But good relationship single authority general.",
+            "price": 43,
+            "stock_quantity": [
+                173,
+                -98,
+                -67
+            ]
+        },
+        {
+            "id": "61aa9ce6-d0c0-4653-803f-beb273b52c08",
+            "title": "Them",
+            "category": "constructor",
+            "currency": "UAH",
+            "description": "Test clear resource ready.",
+            "price": 49,
+            "stock_quantity": [
+                88,
+                -28
+            ]
+        },
+        {
+            "id": "8c239025-7649-49a8-851c-024cced382f2",
+            "title": "Mother",
+            "category": "soft toy",
+            "currency": "USD",
+            "description": "All bag subject loss outside final able.",
+            "price": 43,
+            "stock_quantity": [
+                59,
+                -27,
+                -18
+            ]
+        },
+        {
+            "id": "7472e991-f15a-4aca-9afa-cd10ad57824c",
+            "title": "Material",
+            "category": "soft toy",
+            "currency": "UAH",
+            "description": "Party interest book both likely.",
+            "price": 14,
+            "stock_quantity": [
+                128,
+                -4,
+                -85
+            ]
+        }
+    ],
+    "customers": [
+        {
+            "id": "ef8bbb80-b64e-45e6-959e-00b11246c038",
+            "name": "Paul Alvarez",
+            "email": "castillotimothy@example.net",
+            "phone": "(557)360-2240x90975",
+            "orders": [
+                {
+                    "id": "3d453e17-171d-42f0-82f1-fed84f343c56",
+                    "order_items": [
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 103,
+                            "price": 13,
+                            "discount": 10,
+                            "item_total_price": 1111
+                        }
+                    ],
+                    "total_price": 1111
+                },
+                {
+                    "id": "c5b106e8-4910-4b63-ba6f-f6cc31e42d2f",
+                    "order_items": [
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 145,
+                            "price": 40,
+                            "discount": 5,
+                            "item_total_price": 3078
+                        }
+                    ],
+                    "total_price": 3078
+                },
+                {
+                    "id": "30f2c3d1-fe14-4c65-ac59-95d083467865",
+                    "order_items": [
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 36,
+                            "price": 37,
+                            "discount": 5,
+                            "item_total_price": 1265
+                        }
+                    ],
+                    "total_price": 1265
+                }
+            ]
+        },
+        {
+            "id": "862136ac-3171-4bfe-9b6d-f8a0c80b4851",
+            "name": "Melanie Escobar",
+            "email": "ryan00@example.org",
+            "phone": "600-531-5147x53459",
+            "orders": [
+                {
+                    "id": "a749a9a6-e20a-45b1-983a-7a92241bf4a4",
+                    "order_items": [
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 6,
+                            "price": 13,
+                            "discount": 20,
+                            "item_total_price": 62
+                        }
+                    ],
+                    "total_price": 62
+                },
+                {
+                    "id": "38d7401b-b356-4bb2-adc1-84a6a2585f40",
+                    "order_items": [
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 9,
+                            "price": 13,
+                            "discount": 5,
+                            "item_total_price": 111
+                        }
+                    ],
+                    "total_price": 111
+                },
+                {
+                    "id": "0cf2a9df-f119-4f2c-9b59-2197ea75d9ba",
+                    "order_items": [
+                        {
+                            "product_id": "1539e004-a57c-4113-a25a-289d79a55e63",
+                            "quantity": 95,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 1938
+                        },
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 85,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 355
+                        },
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 50,
+                            "price": 13,
+                            "discount": 20,
+                            "item_total_price": 520
+                        }
+                    ],
+                    "total_price": 2813
+                },
+                {
+                    "id": "fbab0ec5-5954-4c25-aab5-c93d326d06e6",
+                    "order_items": [
+                        {
+                            "product_id": "2bda4310-1503-4f56-a3aa-efbfdfd2aedb",
+                            "quantity": 22,
+                            "price": 35,
+                            "discount": 10,
+                            "item_total_price": 693
+                        }
+                    ],
+                    "total_price": 693
+                },
+                {
+                    "id": "99cc32f5-242a-4441-baf0-d75d7c25bb60",
+                    "order_items": [
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 3,
+                            "price": 40,
+                            "discount": 10,
+                            "item_total_price": 108
+                        }
+                    ],
+                    "total_price": 108
+                },
+                {
+                    "id": "d717c7b1-efde-47d3-8edd-c532c2e093b7",
+                    "order_items": [
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 73,
+                            "price": 13,
+                            "discount": 10,
+                            "item_total_price": 854
+                        },
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 59,
+                            "price": 40,
+                            "discount": 5,
+                            "item_total_price": 2242
+                        },
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 20,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 629
+                        },
+                        {
+                            "product_id": "1539e004-a57c-4113-a25a-289d79a55e63",
+                            "quantity": 40,
+                            "price": 24,
+                            "discount": 5,
+                            "item_total_price": 912
+                        }
+                    ],
+                    "total_price": 4637
+                },
+                {
+                    "id": "1d583bcd-4dd9-42b0-a18e-6e963bc4d354",
+                    "order_items": [
+                        {
+                            "product_id": "2bda4310-1503-4f56-a3aa-efbfdfd2aedb",
+                            "quantity": 13,
+                            "price": 35,
+                            "discount": 15,
+                            "item_total_price": 386
+                        }
+                    ],
+                    "total_price": 386
+                },
+                {
+                    "id": "48308f77-0fa6-464f-bcea-c99913e09444",
+                    "order_items": [
+                        {
+                            "product_id": "1539e004-a57c-4113-a25a-289d79a55e63",
+                            "quantity": 1,
+                            "price": 24,
+                            "discount": 10,
+                            "item_total_price": 21
+                        }
+                    ],
+                    "total_price": 21
+                }
+            ]
+        },
+        {
+            "id": "5f8c0d00-f498-40aa-9b48-2a8c3710ac7c",
+            "name": "Melinda Lang",
+            "email": "jessica75@example.com",
+            "phone": "302-309-3557",
+            "orders": [
+                {
+                    "id": "03caacc0-f373-4ebf-9d6c-911ed0192fc3",
+                    "order_items": [
+                        {
+                            "product_id": "2bda4310-1503-4f56-a3aa-efbfdfd2aedb",
+                            "quantity": 6,
+                            "price": 35,
+                            "discount": 10,
+                            "item_total_price": 189
+                        }
+                    ],
+                    "total_price": 189
+                },
+                {
+                    "id": "f522d5bd-00d7-4070-ac17-e0c95416c983",
+                    "order_items": [
+                        {
+                            "product_id": "7472e991-f15a-4aca-9afa-cd10ad57824c",
+                            "quantity": 85,
+                            "price": 14,
+                            "discount": 10,
+                            "item_total_price": 1071
+                        }
+                    ],
+                    "total_price": 1071
+                }
+            ]
+        },
+        {
+            "id": "6722792e-33b2-471c-9977-8d6ae7a6d119",
+            "name": "Bryan Jenkins",
+            "email": "colinsanchez@example.com",
+            "phone": "(353)914-6596x814",
+            "orders": [
+                {
+                    "id": "8c92bee5-088d-4eee-a908-8d1114405dd8",
+                    "order_items": [
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 47,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 314
+                        },
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 4,
+                            "price": 13,
+                            "discount": 20,
+                            "item_total_price": 41
+                        },
+                        {
+                            "product_id": "2bda4310-1503-4f56-a3aa-efbfdfd2aedb",
+                            "quantity": 46,
+                            "price": 35,
+                            "discount": 10,
+                            "item_total_price": 1449
+                        }
+                    ],
+                    "total_price": 1804
+                },
+                {
+                    "id": "8648c1a2-cb4b-4b9a-804d-0760459962f3",
+                    "order_items": [
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 13,
+                            "price": 37,
+                            "discount": 15,
+                            "item_total_price": 408
+                        }
+                    ],
+                    "total_price": 408
+                },
+                {
+                    "id": "3ec0dc06-8383-4cd1-9011-368a33e32d7c",
+                    "order_items": [
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 13,
+                            "price": 40,
+                            "discount": 10,
+                            "item_total_price": 468
+                        }
+                    ],
+                    "total_price": 468
+                },
+                {
+                    "id": "34b9e8c5-d884-42cb-a41c-fdbf9632bf7e",
+                    "order_items": [
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 13,
+                            "price": 40,
+                            "discount": 5,
+                            "item_total_price": 494
+                        },
+                        {
+                            "product_id": "2754eb4e-1ffa-4217-b1a3-bd0ed31397f0",
+                            "quantity": 118,
+                            "price": 13,
+                            "discount": 5,
+                            "item_total_price": 819
+                        }
+                    ],
+                    "total_price": 1313
+                },
+                {
+                    "id": "d9a29418-5900-4639-af63-51f030748dcc",
+                    "order_items": [
+                        {
+                            "product_id": "e04cf7ad-6cd7-460d-926c-2483d09bb8b4",
+                            "quantity": 44,
+                            "price": 40,
+                            "discount": 20,
+                            "item_total_price": 1408
+                        }
+                    ],
+                    "total_price": 1408
+                },
+                {
+                    "id": "82c661e3-6f30-4c2d-b1ce-4f4de1878d1f",
+                    "order_items": [
+                        {
+                            "product_id": "8c239025-7649-49a8-851c-024cced382f2",
+                            "quantity": 27,
+                            "price": 43,
+                            "discount": 15,
+                            "item_total_price": 986
+                        }
+                    ],
+                    "total_price": 986
+                }
+            ]
+        },
+        {
+            "id": "93d3dd78-e281-4e0c-a95c-fb15bc6b6c8a",
+            "name": "John Newman",
+            "email": "michael46@example.com",
+            "phone": "(338)587-6805",
+            "orders": [
+                {
+                    "id": "76f9f783-1f7c-4d97-95e4-8269f5d4c8c0",
+                    "order_items": [
+                        {
+                            "product_id": "61aa9ce6-d0c0-4653-803f-beb273b52c08",
+                            "quantity": 28,
+                            "price": 49,
+                            "discount": 15,
+                            "item_total_price": 1166
+                        },
+                        {
+                            "product_id": "7472e991-f15a-4aca-9afa-cd10ad57824c",
+                            "quantity": 4,
+                            "price": 14,
+                            "discount": 10,
+                            "item_total_price": 50
+                        }
+                    ],
+                    "total_price": 1216
+                },
+                {
+                    "id": "b503b745-b3fe-46c2-9443-c6c3512b412e",
+                    "order_items": [
+                        {
+                            "product_id": "65cc1eca-172f-4e1d-9d37-af253996b0ef",
+                            "quantity": 46,
+                            "price": 44,
+                            "discount": 15,
+                            "item_total_price": 1720
+                        }
+                    ],
+                    "total_price": 1720
+                },
+                {
+                    "id": "77a3a07d-f8b5-47a3-b69e-dd80af34f9d2",
+                    "order_items": [
+                        {
+                            "product_id": "aa88e87e-4f8b-4c81-a151-fbf9d24e85ce",
+                            "quantity": 165,
+                            "price": 43,
+                            "discount": 5,
+                            "item_total_price": 4003
+                        }
+                    ],
+                    "total_price": 4003
+                },
+                {
+                    "id": "a25e385e-7714-4bd5-bfa0-4cb962daf56e",
+                    "order_items": [
+                        {
+                            "product_id": "65cc1eca-172f-4e1d-9d37-af253996b0ef",
+                            "quantity": 6,
+                            "price": 44,
+                            "discount": 10,
+                            "item_total_price": 237
+                        },
+                        {
+                            "product_id": "8c239025-7649-49a8-851c-024cced382f2",
+                            "quantity": 18,
+                            "price": 43,
+                            "discount": 20,
+                            "item_total_price": 619
+                        }
+                    ],
+                    "total_price": 856
+                }
+            ]
+        },
+        {
+            "id": "a4efe01e-998e-431e-8771-b1fca074b52b",
+            "name": "Paula Adams",
+            "email": "bethanygonzalez@example.org",
+            "phone": "001-824-903-3023x839",
+            "orders": [
+                {
+                    "id": "1d3ffc28-edc5-4e4d-a805-1f9d303657f6",
+                    "order_items": [
+                        {
+                            "product_id": "88a39824-6897-40b7-8e9c-437e6dd597dc",
+                            "quantity": 43,
+                            "price": 37,
+                            "discount": 20,
+                            "item_total_price": 1272
+                        },
+                        {
+                            "product_id": "65cc1eca-172f-4e1d-9d37-af253996b0ef",
+                            "quantity": 41,
+                            "price": 44,
+                            "discount": 15,
+                            "item_total_price": 1533
+                        }
+                    ],
+                    "total_price": 2805
+                }
+            ]
+        },
+        {
+            "id": "b2973820-d6bc-4160-8269-8d3486e2a0b7",
+            "name": "Blake York",
+            "email": "aarellano@example.org",
+            "phone": "3209844592",
+            "orders": [
+                {
+                    "id": "e06780d7-7deb-4662-a45a-207f1729a00a",
+                    "order_items": [
+                        {
+                            "product_id": "65cc1eca-172f-4e1d-9d37-af253996b0ef",
+                            "quantity": 43,
+                            "price": 44,
+                            "discount": 15,
+                            "item_total_price": 1608
+                        },
+                        {
+                            "product_id": "1539e004-a57c-4113-a25a-289d79a55e63",
+                            "quantity": 23,
+                            "price": 24,
+                            "discount": 15,
+                            "item_total_price": 469
+                        }
+                    ],
+                    "total_price": 2077
+                }
+            ]
+        }
+    ]
+}

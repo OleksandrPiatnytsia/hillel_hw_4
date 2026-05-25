@@ -23,7 +23,7 @@ def create_random_product() -> Product:
     )
 
     product.change_price(random.randint(10, 50))
-    product.update_stock(random.randint(1, 100))
+    product.update_stock(random.randint(50, 200))
 
     return product
 

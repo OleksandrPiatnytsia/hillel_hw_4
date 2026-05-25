@@ -1,4 +1,4 @@
-from models.ecom_models import Order
+from models.ecom_models import Order, ProductsCollection, Customer
 from fake_data import (
     create_random_product,
     create_random_customer,
@@ -6,6 +6,8 @@ from fake_data import (
 )
 import random
 from serialization.json_serialization import JsonDataSerialization
+
+LOWER_STOCK_QUANTITY = 25
 
 
 def main():
@@ -16,8 +18,12 @@ def main():
     for _ in range(random.randint(0, 3)):
         customers.append(create_random_customer())
 
+    for product in products.values():
+        if product.stock_quantity < LOWER_STOCK_QUANTITY:
+            product.update_stock(random.randint(25, 100))
+
     # Додаємо випадкові products
-    for _ in range(random.randint(0, 3)):
+    for _ in range(random.randint(0, 5)):
         products.add_product(create_random_product())
 
     # Якщо продуктів немає — створюємо хоча б один
@@ -40,7 +46,8 @@ def main():
 
         random_customer = random.choice(customers)
 
-        random_customer.add_order(new_order)
+        if new_order.order_items:
+            random_customer.add_order(new_order)
 
     # print(f"\nCustomers count: {len(customers)}")
     # print(f"Products count: {len(products)}")
