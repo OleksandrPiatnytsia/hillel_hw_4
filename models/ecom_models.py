@@ -216,34 +216,44 @@ class Order(UniqueIdentifier, SerializationDefine):
 
     def add_order_item(self, new_order_item: OrderItem) -> bool:
 
-        if (
-            new_order_item.quantity
-            > new_order_item.product.stock_quantity
-        ):
+        if new_order_item.quantity > new_order_item.product.stock_quantity:
             print(
                 f"Order item quantity:{new_order_item.quantity} exceeds product stock quantity:"
                 f" {new_order_item.product.stock_quantity}"
             )
             return False
 
-        product_exists = False
+        existing_order_item = next(
+            (
+                item
+                for item in self.order_items
+                if item.product == new_order_item.product
+            ),
+            None,
+        )
 
-        for order_item in self.order_items:
-            if order_item.product == new_order_item.product:
-                product_exists = True
+        if existing_order_item:
+            print(
+                f"{existing_order_item.product}. "
+                f"Adding quantity: {new_order_item.quantity} "
+                f"to existing quantity: {existing_order_item.quantity}"
+            )
 
-                print(f"{order_item.product}. Додаємо кількість: {new_order_item.quantity} до існуючого товару: {order_item.quantity}")
+            existing_order_item.quantity += new_order_item.quantity
 
-                order_item.quantity += new_order_item.quantity
+            print(
+                f"{existing_order_item.product}. Після Додавання: {existing_order_item.quantity}"
+            )
 
-                print(f"{order_item.product}. Після Додавання: {order_item.quantity}")
+            existing_order_item.discount = min(
+                existing_order_item.discount, new_order_item.discount
+            )
+            existing_order_item.price = min(
+                existing_order_item.price, new_order_item.price
+            )
 
-                order_item.discount = min(
-                    order_item.discount, new_order_item.discount
-                )
-                order_item.price = min(order_item.price, new_order_item.price)
+        else:
 
-        if not product_exists:
             self.order_items.append(new_order_item)
 
         new_order_item.product.update_stock(-new_order_item.quantity)
