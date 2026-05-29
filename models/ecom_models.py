@@ -128,6 +128,32 @@ class Product(UniqueIdentifier, SerializationDefine):
         return product
 
 
+class Serializer:
+
+    CUSTOM_SERIALIZERS = {Product: lambda obj: obj.id}
+
+    @classmethod
+    def to_dict(cls, obj):
+
+        if isinstance(obj, (str, int, float, bool, type(None))):
+            return obj
+
+        for model, serializer in cls.CUSTOM_SERIALIZERS.items():
+            if isinstance(obj, model):
+                return serializer(obj)
+
+        if isinstance(obj, list):
+            return [cls.to_dict(item) for item in obj]
+
+        if isinstance(obj, dict):
+            return {key: cls.to_dict(value) for key, value in obj.items()}
+
+        if hasattr(obj, "__dict__"):
+            return {key: cls.to_dict(value) for key, value in vars(obj).items()}
+
+        return str(obj)
+
+
 class ProductsCollection(
     UserDict[str, Product],
     metaclass=SingletonMeta,
@@ -328,3 +354,10 @@ class Customer(UniqueIdentifier, SerializationDefine):
         customer.orders = [Order.from_dict(order_data) for order_data in data["orders"]]
 
         return customer
+
+
+if __name__ == "__main__":
+
+    p = Product("Test Product", ProductCategory.soft_toy, Currency.EUR)
+    print(p.__annotations__)
+    # print(dir())
